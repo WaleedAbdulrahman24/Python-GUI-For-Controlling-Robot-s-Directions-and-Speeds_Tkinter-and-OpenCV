@@ -1,0 +1,300 @@
+import serial
+from tkinter import *
+from PIL import ImageTk, Image
+import cv2
+import time
+
+arduinoData = serial.Serial('com41', 9600)
+time.sleep(1)
+#directions
+
+
+def but1():   
+  arduinoData.write('1'.encode())
+  text_dir1=Label(text_direction,text="Left_FW",foreground="black",background="gold",width=11, height=2,relief="groove")
+  text_dir1.place(anchor="c", relx=0.499, rely=0.4999) 
+   
+def but2():   
+   arduinoData.write('2'.encode())
+   text_dir2=Label(text_direction,text="Forward",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir2.place(anchor="c", relx=0.499, rely=0.4999) 
+def but3():   
+   arduinoData.write('3'.encode())
+   text_dir3=Label(text_direction,text="Righ_FW",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir3.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but4():   
+   arduinoData.write('4'.encode())
+   text_dir4=Label(text_direction,text="Left",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir4.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but5():   
+   arduinoData.write('5'.encode())
+   text_dir5=Label(text_direction,text="Stop",foreground="black",background="coral",width=11, height=2,relief="groove")
+   text_dir5.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but6():   
+   arduinoData.write('6'.encode())
+   text_dir6=Label(text_direction,text="Right",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir6.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but7():   
+   arduinoData.write('7'.encode())
+   text_dir7=Label(text_direction,text="Left_BW",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir7.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but8():   
+   arduinoData.write('8'.encode())
+   text_dir8=Label(text_direction,text="Backward",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir8.place(anchor="c", relx=0.499, rely=0.4999) 
+    
+def but9():   
+   arduinoData.write('9'.encode())
+   text_dir9=Label(text_direction,text="Righ_BW",foreground="black",background="gold",width=11, height=2,relief="groove")
+   text_dir9.place(anchor="c", relx=0.499, rely=0.4999) 
+  
+
+#speeds
+def speed1():
+  setv = var.set(51)
+  arduinoData.write('a'.encode())
+  ledrun1 = Label(ledbd1,width=4, height=2,background = "purple",relief="groove")
+  ledrun1.place(anchor="c", relx=0.499, rely=0.4999)
+  #ledrun1.after(100, lambda: ledrun1.place_forget() )
+  ledrun2 = Label(ledbd2,width=4, height=2,relief="groove")
+  ledrun2.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun3 = Label(ledbd3,width=4, height=2,relief="groove")
+  ledrun3.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun4 = Label(ledbd4,width=4, height=2,relief="groove")
+  ledrun4.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun5 = Label(ledbd5,width=4, height=2,relief="groove")
+  ledrun5.place(anchor="c", relx=0.499, rely=0.4999)
+  
+  text_speed1=Label(text,text="NO_DANGER",foreground="white",background = "purple",width=11, height=2,relief="groove")
+  text_speed1.place(anchor="c", relx=0.499, rely=0.4999)
+  speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5).place(relx=.1, rely=.70, anchor="nw")
+ 
+  
+
+ 
+def speed2():
+  setv = var.set(102)
+  arduinoData.write('b'.encode())
+  ledrun1 = Label(ledbd1,width=4, height=2,relief="groove")
+  ledrun1.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun2 = Label(ledbd2,width=4, height=2,background = "brown4",relief="groove")
+  ledrun2.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun3 = Label(ledbd3,width=4, height=2,relief="groove")
+  ledrun3.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun4 = Label(ledbd4,width=4, height=2,relief="groove")
+  ledrun4.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun5 = Label(ledbd5,width=4, height=2,relief="groove")
+  ledrun5.place(anchor="c", relx=0.499, rely=0.4999)
+  text_speed2=Label(text,text="Still Safe", foreground="white",background = "brown4",width=11, height=2,relief="groove")
+  text_speed2.place(anchor="c", relx=0.499, rely=0.4999)
+  speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5).place(relx=.1, rely=.70, anchor="nw")
+ 
+
+   
+def speed3():
+  setv = var.set(153)
+  arduinoData.write('c'.encode())
+  ledrun1 = Label(ledbd1,width=4, height=2,relief="groove")
+  ledrun1.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun2 = Label(ledbd2,width=4, height=2,relief="groove")
+  ledrun2.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun3 = Label(ledbd3,width=4, height=2,background = "blue",relief="groove")
+  ledrun3.place(anchor="c", relx=0.499, rely=0.4999) 
+  ledrun4 = Label(ledbd4,width=4, height=2,relief="groove")
+  ledrun4.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun5 = Label(ledbd5,width=4, height=2,relief="groove")
+  ledrun5.place(anchor="c", relx=0.499, rely=0.4999)
+  text_speed3=Label(text,text="Take Care",foreground="white",background = "blue",width=11, height=2,relief="groove")
+  text_speed3.place(anchor="c", relx=0.499, rely=0.4999)
+  speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5).place(relx=.1, rely=.70, anchor="nw")
+
+   
+def speed4():
+  setv = var.set(204)
+  arduinoData.write('d'.encode())
+  ledrun1 = Label(ledbd1,width=4, height=2,relief="groove")
+  ledrun1.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun2 = Label(ledbd2,width=4, height=2,relief="groove")
+  ledrun2.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun3 = Label(ledbd3,width=4, height=2,relief="groove")
+  ledrun3.place(anchor="c", relx=0.499, rely=0.4999) 
+  ledrun4 = Label(ledbd4,width=4, height=2,background = "DeepPink2",relief="groove")
+  ledrun4.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun5 = Label(ledbd5,width=4, height=2,relief="groove")
+  ledrun5.place(anchor="c", relx=0.499, rely=0.4999)
+  text_speed4=Label(text,text="Don't Increase",foreground="white",background = "DeepPink2",width=11, height=2,relief="groove")
+  text_speed4.place(anchor="c", relx=0.499, rely=0.4999)
+  speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5).place(relx=.1, rely=.70, anchor="nw")
+ 
+    
+def speed5():
+  setv = var.set(255)
+  arduinoData.write('e'.encode())
+  ledrun1 = Label(ledbd1,width=4, height=2,relief="groove")
+  ledrun1.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun2 = Label(ledbd2,width=4, height=2,relief="groove")
+  ledrun2.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun3 = Label(ledbd3,width=4, height=2,relief="groove")
+  ledrun3.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun4 = Label(ledbd4,width=4, height=2,relief="groove")
+  ledrun4.place(anchor="c", relx=0.499, rely=0.4999)
+  ledrun5 = Label(ledbd5,width=4, height=2,background = "red2",relief="groove")
+  ledrun5.place(anchor="c", relx=0.499, rely=0.4999)
+  text_speed5=Label(text,text="Danger",foreground="white",background = "red2",width=11, height=2,relief="groove")
+  text_speed5.place(anchor="c", relx=0.499, rely=0.4999)
+  speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5,background="red2").place(relx=.1, rely=.70, anchor="nw")
+  warning_message = Text(window, background="red2",foreground="white",width=17,height=1)
+  warning_message.insert(END, "        Slow Down")
+  warning_message.place(relx=.125, rely=.01, anchor="nw")
+  warning_message.configure(font='helvetica 30')
+  warning_message.after(3000, lambda: warning_message.place_forget() )
+
+
+  #change_color()
+
+
+
+
+def change_color():
+    current_color = warning_message.cget("background")
+    next_color = "lavender" if current_color == "green" else "green"
+    current_color1 = warning_message.cget("foreground")
+    next_color1 = "green" if current_color1 == "lavender" else "lavender"
+    warning_message.config(background=next_color)
+    warning_message.config(foreground=next_color1)
+    warning_message.after(1000, change_color)
+ 
+
+window = Tk()
+var = DoubleVar()
+window.title("Welcome to Waleed Al-Akwa app")
+window['bg']='lavender'
+window.geometry('2000x900')
+v = StringVar(window, "0") 
+camera1 = cv2.VideoCapture(0)
+#camera2 = cv2.VideoCapture(2)
+
+warning_message = Text(window, background="green",foreground="lavender",width=17,height=1)
+warning_message.insert(END, " Have a good driving")
+warning_message.place(relx=.125, rely=.01, anchor="nw")
+warning_message.configure(font='helvetica 30')
+change_color()
+
+
+
+
+photo1 = PhotoImage(file = r"D:\GP\directions\1.PNG")
+photo2 = PhotoImage(file = r"D:\GP\directions\2.PNG")
+photo3 = PhotoImage(file = r"D:\GP\directions\3.PNG")
+photo4 = PhotoImage(file = r"D:\GP\directions\4.PNG")
+photo5 = PhotoImage(file = r"D:\GP\directions\5.PNG")
+photo6 = PhotoImage(file = r"D:\GP\directions\6.PNG")
+photo7 = PhotoImage(file = r"D:\GP\directions\7.PNG")
+photo8 = PhotoImage(file = r"D:\GP\directions\8.PNG")
+photo9 = PhotoImage(file = r"D:\GP\directions\9.PNG")
+
+btn1 =Button(window,image = photo1,command=but1,background = "light blue" ,relief="groove").place(relx=.1, rely=.1, anchor="nw")
+btn2 =Button(window,image = photo2,command=but2,background = "light blue" ,relief="groove").place(relx=.25, rely=.1, anchor="n")
+btn3 =Button(window,image = photo3,command=but3,background = "light blue" ,relief="groove").place(relx=.35, rely=.1, anchor="n") 
+btn4 =Button(window,image = photo4,command=but4,background = "light blue" ,relief="groove").place(relx=.1, rely=.38, anchor="w")
+btn5 =Button(window,image = photo5,command=but5,background = "light blue" ,relief="groove").place(relx=.25, rely=.38, anchor="c")
+btn6 =Button(window,image = photo6,command=but6,background = "light blue" ,relief="groove").place(relx=.398, rely=.38, anchor="e")
+btn7 =Button(window,image = photo7,command=but7,background = "light blue" ,relief="groove").place(relx=.1, rely=.66, anchor="sw")
+btn8 =Button(window,image = photo8,command=but8,background = "light blue" ,relief="groove").place(relx=.25, rely=.66, anchor="s")
+btn9 =Button(window,image = photo9,command=but9,background = "light blue" ,relief="groove").place(relx=.395, rely=.66, anchor="se")
+
+ 
+
+    
+
+speed_indicator= Scale(window,width=150, from_=0, to=255,variable=var,length=450,tickinterval=51, orient=HORIZONTAL,relief="groove",bigincrement=5).place(relx=.1, rely=.70, anchor="nw")
+
+photos1 = PhotoImage(file = r"D:\GP\speeds\s1.png")
+photos2 = PhotoImage(file = r"D:\GP\speeds\s2.png")
+photos3 = PhotoImage(file = r"D:\GP\speeds\s3.png")
+photos4 = PhotoImage(file = r"D:\GP\speeds\s4.png")
+photos5 = PhotoImage(file = r"D:\GP\speeds\s5.png")
+
+btns1 =Button(window,image = photos1,command=speed1,background = "light blue",relief="groove").place(relx=0.56, rely=0.19, anchor="se") 
+btns2 =Button(window,image = photos2,command=speed2,background = "light blue",relief="groove").place(relx=0.56, rely=0.38, anchor="se") 
+btns3 =Button(window,image = photos3,command=speed3,background = "light blue",relief="groove").place(relx=0.56, rely=0.57, anchor="se") 
+btns4 =Button(window,image = photos4,command=speed4,background = "light blue",relief="groove").place(relx=0.56, rely=0.76, anchor="se") 
+btns5 =Button(window,image = photos5,command=speed5,background = "light blue",relief="groove").place(relx=0.56, rely=0.95, anchor="se") 
+ 
+indication = Frame(window,width=120, height=650 , borderwidth = 20,relief="groove")
+indication.place(anchor="w", relx=.01, rely=0.47)
+ledbd1 = Frame(indication,width=75, height=75,borderwidth = 20,relief="groove")
+ledbd1.place(anchor="n", relx=0.5, rely=0.05)
+ledbd2 = Frame(indication,width=75, height=75,borderwidth = 20,relief="groove")
+ledbd2.place(anchor="n", relx=0.5, rely=0.2)
+ledbd3 = Frame(indication,width=75, height=75,borderwidth = 20,relief="groove")
+ledbd3.place(anchor="n", relx=0.5, rely=0.35)
+ledbd4 = Frame(indication,width=75, height=75,borderwidth = 20,relief="groove")
+ledbd4.place(anchor="n", relx=0.5, rely=0.5)
+ledbd5 = Frame(indication,width=75, height=75,borderwidth = 20,relief="groove")
+ledbd5.place(anchor="n", relx=0.5, rely=0.65)
+
+#text label
+#directions
+text_direction= Frame(indication,width=100, height=55,borderwidth = 20,relief="groove")
+text_direction.place(anchor="n", relx=0.5, rely=0.8)
+text_dir=Label(text_direction,text="Directions",width=11, height=2,relief="groove")
+text_dir.place(anchor="c", relx=0.499, rely=0.4999)
+
+#speeds
+text= Frame(indication,width=100, height=55,borderwidth = 20,relief="groove")
+text.place(anchor="n", relx=0.5, rely=0.9)
+text_speed=Label(text,text="Speeds",width=11, height=2,relief="groove")
+text_speed.place(anchor="c", relx=0.499, rely=0.4999)
+
+
+
+
+def video_stream1():
+    x, frame1 = camera1.read()
+    frame1 = cv2.resize(frame1,(580,800))
+    cv2image = cv2.cvtColor(frame1, cv2.COLOR_BGR2RGBA)
+    img = Image.fromarray(cv2image)
+    imgtk = ImageTk.PhotoImage(image=img)
+    display1.imgtk = imgtk
+    display1.configure(image=imgtk)
+    display1.after(100, video_stream1)
+
+def video_stream2():
+    x1, frame2 = camera2.read()
+    frame2 = cv2.resize(frame2,(580,350))
+    cv2image = cv2.cvtColor(frame2, cv2.COLOR_BGR2RGBA)
+    img = Image.fromarray(cv2image)
+    imgtk = ImageTk.PhotoImage(image=img)
+    display2.imgtk = imgtk
+    display2.configure(image=imgtk)
+    display2.after(100, video_stream2)
+ 
+#camera1
+#CameraFrame = LabelFrame(width=cam_width, height=cam_height)
+#CameraFrame.place(relx=0.99, rely=.5, anchor="e")
+imagePreviewFrame = Frame(window,width=600, height=729)
+imagePreviewFrame.place(anchor="se", relx=.967, rely=0.9)
+display1 = Label(imagePreviewFrame,relief="groove")
+#display1.pack()
+display1.place(anchor="c", relx=0.5, rely=0.5)
+
+#camera2
+#display2 = Label(imagePreviewFrame,relief="groove")
+#display1.pack()
+#display2.place(anchor="n", relx=0.5, rely=0.505)
+ 
+
+video_stream1()	
+#video_stream2()
+
+window.mainloop()
+
+
+
+
